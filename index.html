@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,410 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-  <!-- <div id="color">
-  <p > -->
-    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, cum
-     accusamus facilis dolorum nihil neque at sunt quaerat dicta. Nemo!
-  </p>
-</div>
-<br><br>
-  <div id="color">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, cum
-     accusamus facilis dolorum nihil neque at sunt quaerat dicta. Nemo!
-  </p>
-</div>
-<br><br>
-  <div class="color">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, cum
-     accusamus facilis dolorum nihil neque at sunt quaerat dicta. Nemo!
-  </p> -->
-<!-- </div> -->
+<style>
+    div{
+    box-sizing: border-box;
+    border: 3px solid black;
+    width: 50vw;
+    position: relative;
+    left: 24vw;
+    top: 12vh;
+    font-size: larger;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e3be8c;
+    }
+    .Btn{
+        font-size: large;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    font-weight: 800;
+    }
+    .btn{
+        font-size: large;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    font-weight: 800;
+    }
+    .btn1{
+        font-size: large;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    font-weight: 800;
+    }
+    input{
+        border: none;
+        background: none;
+        border-bottom: 2px solid black;
+    }
+    textarea{
+        border: none;
+        background: none;
+        border-bottom: 2px solid black;
+    }
+    table{
+    position: relative;
+    top: 19vh;
+    left: 26vw;
+    width: 43vw;
+    font-weight: 800;
+    border: 3px solid black;
+    font-size: larger;
+    background-color: #e3be8c;
+    }
+</style>
+<body >
+   <div>
+        <form name = "regfrm" id="f_id">
+            Full Name : 
+            <input type="text"  name="fname" id="fullname" >
+            <br><br>
+            E-mail :
+            <input type="email" name="email" id = "e_mail">
+            <br><br>
+            Gender :
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> female
+            <br><br>
+            Mobile No:
+            <input type="number" name="mob_no" id = "mob_no">
+            <br><br>
+            Address:
+            <textarea   id="address" name = "Address" cols="70" rows="2"></textarea>
+            <br><br>
+            <label>Job Type :</label>
+            <input type="checkbox" name="job-type" value="commercial">commercial
+            <input type="checkbox" name="job-type" value="industrial">industrial
+            <input type="checkbox" name="job-type" value="agriculture">agriculture
+            <br><br>
+            <input type="button" id="entry" class="Btn" value="Submit">
+        </form>
+        
+    </div>
 
-<!-- <div class="demo"> Grandparent
-  <div class="demo4 container"><b>Parents</b>
-    <div id="myElement" class="demo2">The parent of this div element will be selected.</div>
-    <div class="mycls">hello</div>
-    <div class="myc12">hiii</div>
-  </div>
-</div>
-<p id="demo1"></p> -->
-    <button id="demo" >demo</button>
-    <button id="demo1">demo1</button> 
-    <button id="demo2">demo2</button> 
-
-
+    <table id = "tbl" border="2">
+    <thead>        
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>mob-no</td>
+            <td>Address</td>
+            <td>Job_type</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody></tbody>
+    </table>
 </body>
-<script>
-// const element = document.querySelector("#myElement");
-// const closest = element.closest(".container");
-// document.querySelector('#demo1').innerHTML = closest;
+<script type="text/javascript">
 
-// const element = document.querySelector(".demo2");
-// let con = document.querySelector('.demo4').contains(element);
-// document.querySelector('#demo1').innerHTML = con;
-
-
-
-
-
-  // var myButton = document.querySelectorAll('button');
-  // myButton.addEventListener('click',myFun);
-  // function myFun(){
-
-    // alert("hiii")
-  // }
-  // myButton.forEach(function(ele){
-  //   ele.addEventListener('click',myFun);
-  // });
-
-
-  // var myButton = document.querySelector("button");
-  // myButton.addEventListener('click',myFun);
-
-  // function myFun(){
-  //   const nodeList = document.querySelectorAll("div > p");
-  //   for (let i = 0; i < nodeList.length; i++) {
-  //       nodeList[i].style.backgroundColor = "red";
-  //    }
-  // }
-
-
-//     //function
-// function sum(x, y) {
-//   return x + y;            
-// }
+    document.querySelector("#entry").addEventListener("click",saveForm);
     
-// function sub(a, b) {
-//   return a - b;            
-// }
     
-// function mul(a, b) {
-//   return a * b;            
-// }
+    function saveForm(){
+        // e.preventDefault;
+        var fullName = document.querySelector("#fullname").value;
+        let emailID = document.querySelector("#e_mail").value;
+        let gender = document.querySelector("[name=gender]:checked");
+        let mobileNumber = document.querySelector("#mob_no").value;
+        let address = document.querySelector("#address").value;
+        let job_type =  document.querySelectorAll("[name=job-type]");
+        let form_id = document.querySelector("#f_id");
+      
+        if(fullName == ""){
+            alert("your name is required");
+            regfrm.fname.focus();
+            return false;  }
+      
+        if(emailID == ""){
+            alert("email-id is must be filled");
+            regfrm.email.focus();
+            return false;  }
 
-// console.log(sum(5,10))
-// console.log(sub(5,10))
-// console.log(mul(5,10))
+        if(gender == null){
+            alert("please select your gender");
+            regfrm.gender[0].focus();
+            return false;
+        }
+       let Gender =  gender.value;
 
-// //string methods
+        if(mobileNumber == ""){
+            alert("mobileNumber is must be filled");
+            regfrm.mob_no.focus();
+            return false;  
+        }
 
-// let str = "Apple, Banana, Kiwi";
-// let x = str.substr(7,8);
-// console.log(x)
-// let y =str.replace("Apple","orange");// replaceall() method replace all same words at one time
-// console.log(y)
-// let text = "hii my name is kirtan"
-// let z = text.toUpperCase();
-// console.log(z)//toLowercase() same as touppercase
-// let text1 = "5"
-// let pad = text1.padStart(4,"0")
-// console.log(pad)//padend() same as padstart
+        if(address == ""){
+            alert("address is must be filled");
+            regfrm.Address.focus();
+            return false;  }
+       
+        if(job_type[0].checked==false && job_type[1].checked==false && job_type[2].checked==false){
+            alert("please select your job type");
+            return false;
+        }
 
-// //string search methods
-// let str1 = "Please locate where 'locate' occurs!";
-// q = str1.indexOf("locate");
-// console.log(q)
-// // str1.lastIndexOf()
-// // Str1.search("where")
-// // Str1.match("locate")
-// // Str1.matchAll("locate")
+        let savevalue = [];
+        let jobTypeArray;
+       
+            for(i=0; i < job_type.length; i++){
+                if(job_type[i].checked){
+                 savevalue.push(job_type[i].value);
+                }
+            }
+            jobTypeArray = savevalue.toString();
+            
 
-// //number method
-// nm = 123
-// mn = nm.toString();
-// console.log( typeof mn);
+        let table = document.querySelector("#tbl tbody");
+        let data = "<tr><td>" + fullName + "</td><td>" + emailID + "</td><td>" + Gender + "</td><td>" + mobileNumber + "</td><td>" + address + "</td><td>" + jobTypeArray + "</td>" + `<td> <button class = "btn" id="myBTN">Delete</button></td> <td> <button class = "btn1" id = "myBTN1">Edit</button></td>` + "</tr>";
 
-// let num = 9.656;
-// mu = num.toExponential(2);
+        table.insertAdjacentHTML("afterend", data);
 
+         
+        document.querySelector(".btn").addEventListener("click",deleteRow);
+        document.querySelector(".btn1").addEventListener("click",editRow);
 
-// //array method
-// var fruits = ["Banana", "Orange", "Apple"];
-// let w = fruits.push("lemon")
-// console.log(fruits)
-// e = fruits.toString()
-// console.log(typeof e)
-// r = fruits.pop();
-// console.log(r)//return poped value
-// let length = fruits.push("Kiwi");
-// console.log(fruits)
-// const myGirls = ["Cecilie", "Lone"];
-// const myBoys = ["Emil", "Tobias", "Linus"];
+        form_id.reset();
 
-// const myChildren = myGirls.concat(myBoys);
-// console.log(myChildren)
-
-// m = myChildren.splice(2,2,"kd","kd")
-// console.log(myChildren)
-
-// n = myChildren.slice(3)
-// console.log(n)
-
-// o = fruits.sort();
-// console.log(o)
-
-// const points = [40, 100, 1, 5, 25, 10];
-// s = points.sort(camp = (a, b)=>{
-//   return a - b});
-// console.log(s)
-
-// let person = {
-//   firstName: "John",
-//   lastName: "Doe",
-//   age: 50,
-//   eyeColor: "blue"
-// };
-// let person = [1,2,45,6,65,48,89]
-// let t = ""
-// for(let i in person){
-//         t += i
-// }
-// document.getElementById("demo").innerHTML = t
-
-//simple calc
-// function sum(x, y) {
-//   return x + y;            
-// }
+        function editRow(){    
+            document.querySelector("#fullname").value = fullName;
+            document.querySelector("#e_mail").value = emailID;
+            // document.querySelector("[name=gender]:checked") ;
+            document.querySelector("#mob_no").value =  mobileNumber;
+            document.querySelector("#address").value =   address;
+        } 
+        function deleteRow(){
+            document.querySelector("#myBTN").closest("tr").remove();
     
-// function sub(a, b) {
-//   return a - b;            
-// }
+        }
+    }
     
-// function mul(a, b) {
-//   return a * b;            
-// }
-    
-// function div(a, b) {
-//   return a / b;            
-// }
-// let tryagain;
-// do{
-//     a = prompt("enter the value of a")
-//     a = Number.parseInt(a)
-//     b = prompt("enter the value of b")
-//     b = Number.parseInt(b);
-//     n = prompt("what do you want")
-// switch (n) {
-//     case 'sum':
-//         console.log("the sum of a and b is",sum(a,b))
-//         break;
-//     case 'sub':
-//         console.log("the sub of a and b is",sub(a,b))
-//         break;
-//     case 'mul':
-//         console.log("the mul of a and b is",mul(a,b))
-//         break;
-//     case 'div':
-//         console.log("the div of a and b is",div(a,b))
-//         break;
-
-//     default:
-//         console.log("invalid choice")
-//         break;
-// }
-
-//  tryagain = confirm("you want to try again")
-// }while(tryagain)
-
-//bigest number in 4 num
-// a = prompt("enter the value of a")
-// a = Number.parseInt(a)
-// b = prompt("enter the value of b")
-// b = Number.parseInt(b);
-// c = prompt("enter the value of c")
-// c = Number.parseInt(c)
-// d = prompt("enter the value of d")
-// d = Number.parseInt(d);
-
-// if (a>b && a>c && a>d) {
-//     console.log("a is a greatest number");
-// }
-// else if(b>a && b>c && b>d){
-//     console.log("b is greatest number")
-// }
-// else if(c>a && c>b && c>d){
-//     console.log("c is greatest number")
-// }
-// else{
-//     console.log("d is greatest number")
-// }
-
-// "use strict";
-// x = 3.14;
-
-//fibonacci series
-// n = prompt("enter the value of n")
-// let a = 0;
-// let b = 1;
-// let c;
-// console.log(a);
-// console.log(b);
-// for (let i = 1; i <= n-2; i++) {
-//     c = a + b;
-//     console.log(c);
-//     a = b;
-//     b = c;
-    
-// }
-
-//sum of digit
-// let n,m,s=0;
-// n = prompt("enter the value of n");
-// while(n > 0){
-//     m = n % 10;
-//     s = s + m;
-//     n = n / 10; 
-// }
-// s = Number.parseInt(s);
-// console.log(s); 
-
-//prime number
-// let p,f = 0;
-// p = prompt("enter the value of p")
-// for (let i = 2; i < p; i++){
-//     if( p % i == 0){
-//         f = 1;
-//     }
-// }
-// if(f == 0){
-//     console.log("it's prime number")
-// }
-// else{
-//     console.log("it's not a prime number")
-// }
-
-// const person = {
-//   name: "John",
-//   age: 30,
-//   city: "New York"
-// };
-// txt = ""
-// for (const key in person) {
-//    txt += key + " : "+ person[key] + "<br>"
-// }
-// document.getElementById("demo").innerHTML = txt;
-
-//2 same func name
-// function sum(x, y) {
-//    return x - y;            
-//  }
-// function sum(x, y) {
-//    return x + y;            
-//  }
-//  document.querySelector('#demo1').innerHTML = sum(5,3);
-
-
-// ==========================================================================================================================
-// Constructor in js
-
-// class RailwayForm {
-//   constructor(givenname,trainno,address){
-//     this.name = givenname
-//     this.trainno = trainno
-//     this.address = address
-//   }
-//   preview(){
-//     alert(this.name + "your tarin detail is here" +" " + this.trainno + " " + this.address)
-//   }
-//   submit() {
-//     alert(this.name + ": Your form is submitted for train number: " + this.trainno + "your address is"+ this.address)
-//   }
-//   cancel() {
-//     alert(this.name + ": This form is cancelled for train number: " + this.trainno + "your address is"+ this.address)
-//     this.trainno = 0
-//   }
-  // fill(givenname, trainno) {
-  //   this.name = givenname
-  //   this.trainno = trainno
-  // }
-// }
-
-// Create a form for Harry
-// let harryForm = new RailwayForm("kirtan",114456,"15/Gokuldham society,powder gully,near film city,goregaw west mumbai-005600")
-// Fill the form with Harry's details
-// harryForm.fill("Harry", 145316)
-
-// Create a forms for Rohan
-// let rohanForm1 = new RailwayForm("harry",112256,"ocean")
-// let rohanForm2 = new RailwayForm("harry1",112256,"ocean2")
-// Fill the forms with Rohan's details
-// rohanForm1.fill("Rohan", 222420)
-// rohanForm2.fill("Rohan", 2229211)
-
-// harryForm.submit()
-// rohanForm1.submit()
-// rohanForm2.submit()
-// rohanForm1.preview()
-// rohanForm1.cancel()
-// rohanForm1.preview()
-
-// ===============================================================================================================
-
-// method override in js
-
-// class Employee {
-//   constructor(name) {
-//     console.log(`${name} - Employee's constructor is here`)
-//     this.name = name
-//   }
-//   login() {
-//     console.log(`Employee has logged in`);
-//   }
-
-//   logout() {
-//     console.log(`Employee has logged out`);
-//   }
-
-//   requestLeaves(leaves) {
-//     console.log(`Employee has requested ${leaves} leaves - Auto approved`)
-//   }
-// }
-
-// class Programmer extends Employee {
-//   constructor(name) {
-//     super(name)
-//     console.log(`${this.name} This is a newly written constructor`)
-//   }
-//   // constructor(...args){ ---> If there is no constructor in the child class, this is created automatically
-//   //   super(...args)
-//   // }
-//   requestCoffee(x) {
-//     console.log(`Employee has requested ${x} coffees`)
-//   }
-//   requestLeaves(leaves) {
-//     super.requestLeaves(4)
-//     console.log(`One extra is granted`)
-//     console.log(`Employee has requested ${leaves + 1} leaves (One extra)`)
-
-//   }
-// }
-
-// let e = new Programmer("Harry")
-// e.login()
-// e.requestLeaves(3)
-// e.requestCoffee(2)
-
-// ===================================================================================================================================================
-
-//Static method in js..
-
-class Animal {
-  constructor(name) {
-    this.name = Animal.capitalize(name)
-  }
-  walk() {
-    alert("Animal " + this.name + " is walking")
-  }
-  static capitalize(name) {
-    return name.charAt(0).toUpperCase() + name.substr(1, name.length)
-  }
-}
-
-j = new Animal("jack")
-j.walk()
-// console.log(j.capitalize("thisa")) // --- > this doesnt work
 </script>
-</html>
+</html> 
